@@ -13,7 +13,16 @@ public class EmployeeFactory {
     }
 
     Employee generateEmployee(){
-        return new Employee(generateId(), generateName(), generateAge(), generateSalary(), generateGender(), generateFixedBugs(), 1);
+        int random = (new Random()).nextInt(3);
+        switch (random){
+            case 0:
+                return new Developer(generateId(), generateName(), generateAge(), generateSalary(), generateGender(), generateFixedBugs());
+            case 1:
+                return new Manager(generateId(), generateName(), generateAge(), generateSalary(), generateGender());
+            case 2:
+                return new Designer(generateId(), generateName(), generateAge(), generateSalary(), generateGender(), generateRate(), generateWorkedDays());
+        }
+        return null;
     }
 
     String generateName(){
@@ -47,5 +56,13 @@ public class EmployeeFactory {
 
     int generateFixedBugs(){
         return new Random().nextInt(200) + 50;
+    }
+
+    int generateRate(){
+        return new Random().nextInt(11) + 1;
+    }
+
+    int generateWorkedDays(){
+        return new Random().nextInt(29) + 1;
     }
 }
