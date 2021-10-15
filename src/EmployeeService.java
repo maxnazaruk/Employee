@@ -10,7 +10,13 @@ public class EmployeeService {
 
     void printEmployees(){
         for (Employee employee : this.employees){
-            System.out.println(employee.toString());
+            if(employee instanceof Developer){
+                System.out.println(((Developer)employee).toString());
+            }else if(employee instanceof Manager){
+                System.out.println(((Manager)employee).toString());
+            }else if(employee instanceof Designer){
+                System.out.println(((Designer)employee).toString());
+            }
         }
     }
 
@@ -85,5 +91,24 @@ public class EmployeeService {
             }
         }
         return oldWorker;
+    }
+
+    double calculateSalaryAndBonus(){
+        double totalMonthlyFee = 0;
+        for (Employee employee : this.employees){
+            totalMonthlyFee += employee.getSalary();
+        }
+        return totalMonthlyFee;
+    }
+
+    void add(Employee employee){
+        Employee[] newEmployees = new Employee[this.employees.length + 1];
+
+        for (int i = 0; i < newEmployees.length - 1; i++) {
+            newEmployees[i] = employees[i];
+        }
+
+        newEmployees[newEmployees.length - 1] = employee;
+        this.employees = newEmployees;
     }
 }

@@ -4,17 +4,14 @@ public class Employee {
     int age;
     int salary;
     boolean gender;
-    int fixedBugs;
-    int defaultBugRate = 1;
 
-    public Employee(long id, String name, int age, int salary, boolean gender, int fixedBugs, int defaultBugRate) {
+    public Employee(long id, String name, int age, int salary, boolean gender) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.salary = salary;
         this.gender = gender;
-        this.fixedBugs = fixedBugs;
-        this.defaultBugRate = defaultBugRate;
+
     }
 
     public long getId() {
@@ -42,7 +39,7 @@ public class Employee {
     }
 
     public int getSalary() {
-        return salary += this.getFixedBugs() * this.getDefaultBugRate();
+        return salary;
     }
 
     public void setSalary(int salary) {
@@ -57,21 +54,7 @@ public class Employee {
         this.gender = gender;
     }
 
-    public int getFixedBugs() {
-        return fixedBugs;
-    }
 
-    public void setFixedBugs(int fixedBugs) {
-        this.fixedBugs = fixedBugs;
-    }
-
-    public int getDefaultBugRate() {
-        return defaultBugRate;
-    }
-
-    public void setDefaultBugRate(int defaultBugRate) {
-        this.defaultBugRate = defaultBugRate;
-    }
 
     @Override
     public String toString() {
@@ -81,8 +64,6 @@ public class Employee {
                 ", age=" + age +
                 ", salary=" + salary +
                 ", gender=" + gender +
-                ", fixedBugs=" + fixedBugs +
-                ", defaultBugRate=" + defaultBugRate +
                 '}';
     }
 }
